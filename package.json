@@ -1,7 +1,7 @@
 { "name": "easyrobot"
 , "description": "Easy to learn and use Node.js based and Rosbridge Suite compatible Robot API."
 , "homepage": "https://github.com/adamfowleruk/easyrobot"
-, "version": "0.1.0"
+, "version": "0.1.1"
 , "author": "Adam Fowler <adamfowleruk@gmail.com> (http://raspberryralph.wordpress.com)"
 , "keywords": ["robot", "easy", "ros", "os", "operating", "system", "nodejs", "rpi", "raspberry", "pi"]
 , "dependencies": { "request": "~2.1.1", "underscore": "~1.1.7", "winston": "~0.6.2"}
