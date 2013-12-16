@@ -43,27 +43,27 @@ server.prototype.begin = function() {
 
 
 // GENERAL MESSAGE PASSING METHODS
-server.prototype._handleClientMessage = function(socketClientConnection,sj,request,json) {
+server.prototype._handleRosApiClientMessage = function(sj,socketClientConnection,request,json) {
   // if from ROS API could be one of:-
   var op = json.op;
-  this._handlers[op].call(this,socketClientConnection,sj,request,json); // throws undefined error if op not supported. TODO add better error handling
+  this._rosapiHandlers[op].call(this,sj,socketClientConnection,request,json); // throws undefined error if op not supported. TODO add better error handling
   // TODO verify it's call and not the other js call alternative (apply)
 };
 
-server.prototype._handlers = {
-  "auth": function(socketClientConnection,sj,request,json) {
+server.prototype._rosapiHandlers = {
+  "auth": function(sj,socketClientConnection,request,json) {
     
   },
-  "call_service": function(socketClientConnection,sj,request,json) {
+  "call_service": function(sj,socketClientConnection,request,json) {
     
   },
-  "subscribe": function(socketClientConnection,sj,request,json) {
+  "subscribe": function(sj,socketClientConnection,request,json) {
     
   },
-  "unsubscribe": function(socketClientConnection,sj,request,json) {
+  "unsubscribe": function(sj,socketClientConnection,request,json) {
     
   },
-  "provide_service": function(socketClientConnection,sj,request,json) {
+  "provide_service": function(sj,socketClientConnection,request,json) {
     
   }
 };
@@ -201,7 +201,7 @@ server.prototype.startWebsocketsListener = function(settings) {
             var json = JSON.parse(message.utf8Data);
             
             // do something with it
-            self._handleClientMessage(socketClientConnection,sj,request,json);
+            self._handleRosApiClientMessage(sj,socketClientConnection,request,json);
             
         } else if (message.type === 'binary') {
             console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');
