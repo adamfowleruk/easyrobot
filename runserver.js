@@ -16,3 +16,8 @@ var server = new EasyRobotServer(); // defaults
 server.setLogger(logger);
 
 server.begin();
+
+server.startRestListener();
+
+server.startWebsocketsListener();
+
